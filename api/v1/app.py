@@ -18,7 +18,6 @@ def close_storage(error):
 
 if __name__ == '__main__':
     """Starting function"""
-    
     # Get host and port from environment variables or set default values
     host = os.getenv('HBNB_API_HOST', '0.0.0.0')
     port = int(os.getenv('HBNB_API_PORT', '5000'))
