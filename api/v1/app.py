@@ -4,6 +4,7 @@ from flask import Flask
 from models import storage
 from api.v1.views import app_views
 import os
+from flask import jsonify
 
 
 app = Flask(__name__)
@@ -14,6 +15,11 @@ app.register_blueprint(app_views)
 def close_storage(error):
     """closing the storage on teardown"""
     storage.close()
+
+
+@app.errorhandler(404)
+def nop(error):
+    return jsonify({"error": "Not found"}), 404
 
 
 if __name__ == '__main__':
