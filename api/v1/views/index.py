@@ -17,7 +17,7 @@ def status():
     return jsonify({"status": "OK"})
 
 
-@app_views.route('/stats', methods=['GET'], strict_slashes=False)
+@app_views.route('/stats', strict_slashes=False)
 def num_of_each_objects():
     """ retrieve number of each objects"""
     classes = [Amenity, City, Place, Review, State, User]
