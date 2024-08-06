@@ -4,7 +4,7 @@ from flask import Flask
 from models import storage
 from api.v1.views import app_views
 import os
-from flask import jsonify
+from flask import jsonify, make_response
 
 
 app = Flask(__name__)
@@ -19,7 +19,7 @@ def close_storage(error):
 
 @app.errorhandler(404)
 def nop(error):
-    return jsonify({"error": "Not found"}), 404
+    return make_response(jsonify({"error": "Not found"}), 404)
 
 
 if __name__ == '__main__':
