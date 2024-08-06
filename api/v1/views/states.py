@@ -21,15 +21,11 @@ def get_all_states():
 @app_views.route('/states/<state_id>', strict_slashes=False)
 def state_state_id(state_id):
     """ retrieve using state_id"""
-    states = storage.all(State).values()
-    lists = []
-    for sts in states:
-        lists.append(sts.to_dict())
+    state = storage.get(State, state_id)
+    if not state:
+        abort(404)
 
-    for st in lists:
-        if st['id'] == state_id:
-            return jsonify(st)
-    abort(404)
+    return jsonify(state.to_dict())
 
 
 @app_views.route('/states/<state_id>',
