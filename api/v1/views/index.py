@@ -16,6 +16,7 @@ def status():
     """returning status on status"""
     return jsonify({"status": "OK"})
 
+
 @app_views.route('/stats', strict_slashes=False)
 def num_of_each_objects():
     """ retrieve number of each objects"""
